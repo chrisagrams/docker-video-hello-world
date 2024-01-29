@@ -5,7 +5,7 @@ from sqlalchemy.orm import sessionmaker
 from models import Base, User
 import redis
 
-app = FastAPI(root_path="/api")
+app = FastAPI(root_path="/api") # Same as nginx location
 
 redis_host = "redis"
 redis_port = 6379
