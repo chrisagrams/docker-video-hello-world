@@ -4,8 +4,11 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    volumes:
+      - ./db:/app/db # Mount sqlite db
     depends_on:
       - redis
+      - nginx
 
   redis:
     image: redis:latest
@@ -19,5 +22,3 @@ services:
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf:ro  # Mount Nginx configuration
       - ./static:/www/data # Mount static files
-    depends_on:
-      - python-app
